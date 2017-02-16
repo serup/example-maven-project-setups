@@ -62,6 +62,27 @@
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>1.8</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro-maven-plugin</artifactId>
+                    <version>${avro.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>idl-protocol</goal>
+                                <goal>schema</goal>
+                                <goal>protocol</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirectory>${project.basedir}/src/main/resources/avro/idl</sourceDirectory>
+                                <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                                <stringType>String</stringType>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
